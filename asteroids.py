@@ -15,31 +15,37 @@ x, y = 400, 400
 x_speed, y_speed = 0, 0
 vel = 0
 acceleration = 0.005  # Rate of acceleration increase
-arrow_angle = 0
+angle = 0 # Rotation of the sprite
 deceleration = 0.98  # Adjust the deceleration rate as needed
 
 # Colours
-white = (242,242,242)
+white = (255,255,255)
 black = (17,17,17)
 
 run_program = True
+
+# Game Loop
 while run_program:
     screen.fill(black)
 
-    for event in py.event.get():
+    # Event Listener
+    for event in py.event.get(): 
         if event.type == py.QUIT:
             run_program = False
         if event.type == py.KEYDOWN:
             if event.key == py.K_ESCAPE:
                 run_program = False
 
-    surface = py.Surface((50, 50))
-    surface.fill((255,255,255))
+    # Sprite
+    square = py.Surface((50, 50))
+    square.fill(white)
 
-    rotated_surface = py.transform.rotate(surface, arrow_angle)
+    # Rotation Code (we'll worry about this in a bit!)
+    rotated_surface = py.transform.rotate(square, angle)
     rotated_rect = rotated_surface.get_rect(center = (x, y))
     screen.blit(rotated_surface, (rotated_rect))
 
+    # Update Surface
     py.display.update()
     clock.tick(100)
 
