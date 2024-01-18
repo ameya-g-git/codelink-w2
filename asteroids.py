@@ -8,11 +8,14 @@ clock = py.time.Clock()
 
 w, h = 1200, 800
 counter = 0
-screen = py.display.set_mode((w, h))    
+screen = py.display.set_mode((w, h))
+
+white = (242, 242, 242)
+black = (17, 17, 17)
 
 run_program = True
 while run_program:
-    screen.fill((17, 17, 17))
+    screen.fill(black)
 
     for event in py.event.get():
         if event.type == py.QUIT:
