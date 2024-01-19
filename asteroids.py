@@ -35,7 +35,7 @@ while run_program:
         if event.type == py.KEYDOWN:
             if event.key == py.K_ESCAPE:
                 run_program = False
-                
+
     # Sprite
     square = py.Surface((50, 50))
     square.fill(white)
@@ -43,7 +43,7 @@ while run_program:
     # Rotation Code (we'll worry about this in a bit!)
     rotated_surface = py.transform.rotate(square, angle)
     rotated_rect = rotated_surface.get_rect(center = (x, y))
-    screen.blit(rotated_surface, (rotated_rect))
+    screen.blit(rotated_surface, rotated_rect)
 
     # Update Surface
     py.display.update()
