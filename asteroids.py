@@ -10,6 +10,10 @@ clock = py.time.Clock()
 w, h = 1200, 800
 screen = py.display.set_mode((w, h))
 
+# Colours
+white = (255,255,255)
+black = (17,17,17)
+
 # Movement & Speed
 x, y = 400, 400
 x_speed, y_speed = 0, 0
@@ -17,10 +21,6 @@ vel = 0
 acceleration = 0.005  # Rate of acceleration increase
 angle = 0 # Rotation of the sprite
 deceleration = 0.98  # Adjust the deceleration rate as needed
-
-# Colours
-white = (255,255,255)
-black = (17,17,17)
 
 run_program = True
 
@@ -35,6 +35,46 @@ while run_program:
         if event.type == py.KEYDOWN:
             if event.key == py.K_ESCAPE:
                 run_program = False
+
+    keys = py.key.get_pressed()
+
+    if keys[py.K_a]:
+        angle += 3
+    
+    elif keys[py.K_d]:
+        angle -= 3
+
+    if keys[py.K_w]:
+        if x_speed > -9 or y_speed > -9:
+            x_speed += -vel
+            y_speed += -vel
+            vel += acceleration
+
+    elif keys[py.K_s]:
+        if x_speed < 9 or y_speed < 9:
+            x_speed += vel
+            y_speed += vel
+            vel += acceleration
+    else:
+        vel = 0 
+        x_speed *= deceleration
+        y_speed *= deceleration
+        if -0.3 < x_speed < 0.3 or -0.3 < y_speed < 0.3:
+            x_speed = 0
+            y_speed = 0
+
+    if x < -32:
+        x = w + 32
+    if x > w + 32:
+        x = -32
+    if y < -32:
+        y = h + 32
+    if y > h + 32:
+        y = -32
+
+    angle_in_radians = math.radians(angle)
+    x += x_speed * math.sin(angle_in_radians)
+    y += y_speed * math.cos(angle_in_radians)
 
     # Sprite
     square = py.Surface((50, 50))
