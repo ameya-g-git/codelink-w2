@@ -16,6 +16,7 @@ black = (17,17,17)
 
 # Movement & Speed
 x, y = 400, 400
+sprite_w, sprite_h = 50, 50
 x_speed, y_speed = 0, 0
 vel = 0
 acceleration = 0.005  # Rate of acceleration increase
@@ -37,7 +38,7 @@ while run_program:
                 run_program = False
 
     # Sprite
-    square = py.Surface((50, 50))
+    square = py.Surface((sprite_w, sprite_h))
     square.fill(white)
 
     # Rotation Code (we'll worry about this in a bit!)
