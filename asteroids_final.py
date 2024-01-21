@@ -47,8 +47,8 @@ while run_program:
 
     if keys[py.K_w]:
         if x_speed > -9 or y_speed > -9:
-            x_speed += -vel
-            y_speed += -vel
+            x_speed += vel
+            y_speed += vel
             vel += acceleration
 
     elif keys[py.K_s]:
@@ -64,14 +64,14 @@ while run_program:
             x_speed = 0
             y_speed = 0
 
-    if x < -32:
-        x = w + 32
-    if x > w + 32:
-        x = -32
-    if y < -32:
-        y = h + 32
-    if y > h + 32:
-        y = -32
+    if x < -sprite_w:
+        x = w + sprite_w
+    if x > w + sprite_w:
+        x = -sprite_w
+    if y < -sprite_h:
+        y = h + sprite_h
+    if y > h + sprite_h:
+        y = -sprite_h
 
     angle_in_radians = math.radians(angle)
     x += x_speed * math.sin(angle_in_radians)
