@@ -47,8 +47,8 @@ while run_program:
 
     if keys[py.K_w]:
         if x_speed > -9 or y_speed > -9:
-            x_speed += vel
-            y_speed += vel
+            x_speed -= vel
+            y_speed -= vel
             vel += acceleration
 
     elif keys[py.K_s]:
